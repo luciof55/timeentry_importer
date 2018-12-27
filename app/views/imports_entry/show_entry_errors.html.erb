@@ -1,0 +1,24 @@
+<h2><%= l(:label_import_entries) %></h2>
+
+<%= link_to 'Volver a importación de horas', new_issues_import_entry_path %>
+
+<% if @import.unsaved_items.count > 0 %>
+  <p><%= l(:notice_import_finished_with_errors, :count => @import.unsaved_items.count, :total => @import.total_items) %></p>
+
+  <table id="unsaved-items" class="list">
+    <thead>
+    <tr>
+      <th>Posición</th>
+      <th>Mensaje</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @import.unsaved_items.each do |item| %>
+    <tr>
+      <td><%= item.position %></td>
+      <td><%= simple_format_without_paragraph item.message %></td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>

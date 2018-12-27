@@ -1,0 +1,23 @@
+<div class="splitcontent">
+<div class="splitcontentleft">
+	<p>
+	  <label for="import_mapping_issue_id"><%= l(:field_issue) %></label>
+	  <%= mapping_select_tag @import, 'issue_id' %>
+	</p>
+	<p>
+	  <label for="import_mapping_spent_on"><%= l(:field_spent_on) %></label>
+	  <%= mapping_select_tag @import, 'spent_on', :required => true %>
+	</p>
+	<p>
+	  <label for="import_mapping_hours"><%= l(:field_hours) %></label>
+	  <%= mapping_select_tag @import, 'hours', :required => true %>
+	</p>
+	<p>
+	  <label for="import_mapping_activity"><%= l(:field_activity) %></label>
+	  <%= mapping_select_tag @import, 'activity', :required => true %>
+	</p>
+	<p>
+	  <label for="import_mapping_comments"><%= l(:field_comments) %></label>
+	  <%= mapping_select_tag @import, 'comments' %>
+	</p>
+</div>

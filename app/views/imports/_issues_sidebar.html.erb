@@ -1,0 +1,4 @@
+<h3></h3>
+<% if User.current.allowed_to?(:log_time, @project) %>
+	<%= link_to 'Importar horas', new_issues_import_entry_path %>
+<% end %>

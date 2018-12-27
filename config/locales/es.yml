@@ -1,0 +1,9 @@
+# Spanish strings go here for Rails i18n
+es:
+  import_time_entry: "Importar horas?"
+  label_import_entries: "Importar horas"
+  label_error_import_save: "La importación no se pudo iniciar, seleccione un archivo."
+  activerecord:
+    errors:
+      messages:
+        not_a_date: "Fecha no válida"

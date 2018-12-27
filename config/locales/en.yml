@@ -1,0 +1,5 @@
+# English strings go here for Rails i18n
+en:
+   import_time_entry: "Import Time Entries?"
+   label_import_entries: "Import entries"
+   label_error_import_save: "Time entries can't be imported, please upload a valid file."
