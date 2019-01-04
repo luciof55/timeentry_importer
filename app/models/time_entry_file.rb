@@ -1,0 +1,3 @@
+class TimeEntryFile < TimeEntry
+
+end

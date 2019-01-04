@@ -3,10 +3,6 @@ class TimeEntryImport < Import
     :time_entries
   end
 
-  def self.authorized?(user)
-    user.allowed_to?(:log_time, nil, :global => true)
-  end
-
   # Returns the objects that were imported
   def saved_objects
     TimeEntry.where(:id => saved_items.pluck(:obj_id)).order(:id).preload(:activity, :project, :issue => [:tracker, :priority, :status])
@@ -14,10 +10,6 @@ class TimeEntryImport < Import
 
   def mappable_custom_fields
     TimeEntryCustomField.all
-  end
-
-  def allowed_target_projects
-    Project.allowed_to(user, :log_time).order(:lft)
   end
 
   def allowed_target_activities(row)
@@ -30,16 +22,37 @@ class TimeEntryImport < Import
 	if Issue.exists?(issue_id)
 		issue = Issue.find(issue_id)
 		return issue.project
-		#allowed_target_projects.find_by_id(issue.project.id) || allowed_target_projects.first
 	end
     
   end
 
   private
+  
+  def configUser(row, time_entry)
+	user_id = row_value(row, 'user')
+	
+	if user_id.present?
+		Rails.logger.debug("Hay usuario id")
+		
+		if user.allowed_to?(:import_time_user, nil, :global => true)
+			Rails.logger.debug("Tiene permisos")
+			user_import = User.find_by_login(user_id)
+			
+			if !user_import.nil?
+				time_entry.user = user_import
+			else
+				Rails.logger.debug("No existe usuario")
+			end
+		else
+			Rails.logger.debug("No Tiene permisos para imputar horas a otros usuarios")
+		end
+	else
+		time_entry.user = user
+	end
+  end
 
   def build_object(row)
-    object = TimeEntry.new
-    object.user = user
+    object = TimeEntryFile.new
 	
 	issue_id = row_value(row, 'issue_id')
 	
@@ -48,6 +61,8 @@ class TimeEntryImport < Import
 		object.issue = issue
 		
 		object.project = issue.project
+		
+		configUser(row, object)
 	
 		if activity_name = row_value(row, 'activity')
 			activity_id = allowed_target_activities(row).named(activity_name).first.try(:id)
@@ -81,9 +96,6 @@ class TimeEntryImport < Import
 	object.hours = row_value(row, 'hours')
 	object.comments = row_value(row, 'comments')
 	
-	Rails.logger.debug("///////////////////TimeEntry///////////////////")
-	Rails.logger.debug(object)
-	Rails.logger.debug("///////////////////TimeEntry///////////////////")
     object
   end
 end

@@ -20,4 +20,10 @@
 	  <label for="import_mapping_comments"><%= l(:field_comments) %></label>
 	  <%= mapping_select_tag @import, 'comments' %>
 	</p>
+	<% if User.current.allowed_to?(:import_time_user, nil, :global => true) %>
+	<p>
+	  <label for="import_mapping_user"><%= l(:field_user) %></label>
+	  <%= mapping_select_tag @import, 'user' %>
+	</p>
+	<% end %>
 </div>

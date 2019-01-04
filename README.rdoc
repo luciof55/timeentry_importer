@@ -1,4 +1,4 @@
-= timeentry_importer
+= Time Entry Importer
 
 This is a plugin for Redmine that allows import time entries form a csv file.
 
@@ -6,6 +6,6 @@ Is based on Issue Import feature, adding field customization in ordr to import t
 
 CSV file structure:
 
-issue, date, spent hours, comment, activity, user
+issue_id; spent_on; hours; comments; activity; user
 
 if user is empty time entries will be associated with user who is running the import

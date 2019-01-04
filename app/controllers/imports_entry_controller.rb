@@ -56,10 +56,9 @@ class ImportsEntryController < ApplicationController
   def mapping_entry
 		
 		if request.post?
-			Rails.logger.info("mapping_entry POST")
+			Rails.logger.debug("mapping_entry POST")
 			respond_to do |format| format.html {
 				if params[:previous]
-					Rails.logger.info("-------------previous-------------------")
 					redirect_to new_issues_import_entry_path(@import)
 				else
 					redirect_to import_run_entry_path(@import)
@@ -68,7 +67,7 @@ class ImportsEntryController < ApplicationController
 			end
 		else
 			begin
-				Rails.logger.info("mapping_entry - GET")
+				Rails.logger.debug("mapping_entry - GET")
 				@import.parse_file
 			
 				rescue CSV::MalformedCSVError => e

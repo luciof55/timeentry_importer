@@ -4,6 +4,6 @@
 	  <%= link_to l(:label_spent_time), time_entries_path(:user_id => 'me') %>
 	  (<%= l(:label_last_n_days, 7) %>)
 	</h3>
-	<%= link_to l(:button_log_time), new_time_entry_path, :class => "icon icon-add" %> | <%= link_to 'Importar horas', new_issues_import_entry_path %>
+	<%= link_to l(:button_log_time), new_time_entry_path, :class => "icon icon-add" %> | <%= link_to 'Importar horas', new_issues_import_entry_path, :class => "icon icon-save" %>
 </div>
 <% end %>
