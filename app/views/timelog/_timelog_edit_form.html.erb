@@ -1,0 +1,6 @@
+<% if User.current.allowed_to?(:import_time_user, nil, :global => true) %>
+<p>
+	<%@usersToDisplay = User.all.sort_by { |n| n[:lastname] }%>
+	<%= form.select :user_id, principals_options_for_select(@usersToDisplay, @time_entry.user), :multiple => false, :include_blank => false %>
+</p>
+<% end %>
