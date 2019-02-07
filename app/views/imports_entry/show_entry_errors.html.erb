@@ -1,8 +1,11 @@
 <h2><%= l(:label_import_entries) %></h2>
 
-<%= link_to 'Volver a importación de horas', new_issues_import_entry_path %>
+<%= link_to l(:import_entry_back), new_issues_import_entry_path %>
 
 <% if @import.unsaved_items.count > 0 %>
+
+  <div class="flash error"><%=l(:import_entry_not_logged)%></div>
+
   <p><%= l(:notice_import_finished_with_errors, :count => @import.unsaved_items.count, :total => @import.total_items) %></p>
 
   <table id="unsaved-items" class="list">
