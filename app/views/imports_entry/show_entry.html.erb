@@ -4,6 +4,8 @@
 
 <% if @import.saved_items.count > 0 %>
   <div class="flash notice"><%= l(:notice_import_finished, :count => @import.saved_items.count) %></div>
+<% else %>
+  <div class="flash error"><%=l(:import_entry_empty_file)%></div>
 <% end %>
 
 <% content_for :sidebar do %>

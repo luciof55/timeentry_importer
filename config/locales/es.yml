@@ -5,6 +5,7 @@ es:
   label_error_import_save: "La importación no se pudo iniciar, seleccione un archivo."
   import_entry_not_logged: Ninguna de las horas han sido cargadas
   import_entry_back: Volver a importación de horas
+  import_entry_empty_file: El archivo no contenía datos
   activerecord:
     errors:
       messages:

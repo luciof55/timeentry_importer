@@ -5,3 +5,4 @@ en:
    label_error_import_save: "Time entries can't be imported, please upload a valid file."
    import_entry_not_logged: None hours were logged
    import_entry_back: Back to time log import
+   import_entry_empty_file: Empty file, none hours were logged
