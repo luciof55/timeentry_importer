@@ -23,6 +23,8 @@ class ImportsEntryController < ApplicationController
   before_filter :authorize_global_import
 
   helper :issues
+  helper :queries
+  include QueriesHelper
 
   def new_entry
   end
