@@ -15,8 +15,8 @@ module ImportIssuePatch
 		  
 		end
 		
-		#THE BEFORE_FILTER IS WHO GIVES THE AUTHORIZATION TO EXECUTE THE FUNCTION
-		#before_filter :authorize, :except => [:archive, :unarchive, :archived?, :unarchived?]
+		#THE before_action IS WHO GIVES THE AUTHORIZATION TO EXECUTE THE FUNCTION
+		#before_action :authorize, :except => [:archive, :unarchive, :archived?, :unarchived?]
 		  
 		Rails.logger.info("++++++++++++++++++++++++++++")
 	#End included

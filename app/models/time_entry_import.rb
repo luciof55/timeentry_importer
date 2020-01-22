@@ -51,7 +51,7 @@ class TimeEntryImport < Import
 	end
   end
 
-  def build_object(row)
+  def build_object(row, item)
     object = TimeEntryFile.new
 	
 	issue_id = row_value(row, 'issue_id')
