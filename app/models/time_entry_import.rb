@@ -75,6 +75,7 @@ class TimeEntryImport < Import
 		end
 		
 	else
+		Rails.logger.info("Issue not found")
 		object.issue_id = -1
 		object.project_id = -1
 		object.activity_id = -1
@@ -89,7 +90,8 @@ class TimeEntryImport < Import
 		Rails.logger.debug(spent_on)
 		Rails.logger.debug("Fecha parsed")
 		object.spent_on = spent_on
-	rescue   
+	rescue StandardError => e
+		Rails.logger.info(e.message)
 		Rails.logger.error("Fecha en formato no válido")
 	end
 		

@@ -119,9 +119,14 @@ class ImportsEntryController < ApplicationController
   end
 
   def update_from_params
-    if params[:import_settings].is_a?(Hash)
+    if params[:import_settings]
       @import.settings ||= {}
-      @import.settings.merge!(params[:import_settings])
+	  safe_params = params.permit(import_settings: [mapping: [ :issue_id, :spent_on, :hours, :activity, :comments, :user]])
+	  mapping = safe_params[:import_settings]
+	  Rails.logger.debug("Mapping-----------")
+	  Rails.logger.debug(mapping)
+	  Rails.logger.debug("Mapping-----------")
+      @import.settings.merge!(mapping.to_h)
       @import.save!
     end
   end
