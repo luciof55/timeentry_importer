@@ -54,7 +54,11 @@ class TimeEntryImport < Import
   def build_object(row, item)
     object = TimeEntryFile.new
 	
+	Rails.logger.info("*******************************************************")
 	issue_id = row_value(row, 'issue_id')
+	Rails.logger.info("ROW")
+	Rails.logger.info(row)
+	Rails.logger.info("*******************************************************")
 	
 	if Issue.exists?(issue_id)
 		issue = Issue.find(issue_id)

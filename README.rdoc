@@ -1,5 +1,7 @@
 = Time Entry Importer
 
+Upgrade to Redmine 6.0.2
+
 This is a plugin for Redmine that allows import time entries form a csv file.
 
 Is based on Issue Import feature, adding field customization in ordr to import time entries
